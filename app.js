@@ -11,6 +11,18 @@ yargs.command({
     handler: function(argv) {
         console.log(chalk.blue.bold("Adding new note..."));
         utils.addNote(argv.title, argv.body);
+    },
+    builder: {
+        title: {
+            describe: 'Title of the new note',
+            demandOption: true,
+            type: 'string'
+        },
+        body: {
+            describe: 'Body of the new note',
+            demandOption: true,
+            type: 'string'
+        }
     }
 })
 
@@ -30,6 +42,13 @@ yargs.command({
     handler: function(argv) {
         console.log("Listing all notes...");
         utils.removeNote(argv.title);
+    },
+    builder: {
+        title: {
+            describe: "Title of the note to be removed",
+            demandOption: true,
+            type: 'string'
+        }
     }
 })
 
