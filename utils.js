@@ -4,7 +4,7 @@ const chalk = require("chalk");
 
 // function to add new note; takes in title and both of the note
 const addNote = function (title, body) {
-    
+    console.log("Trying to add with title...", title)
     // get exiting notes
     const notes = getNotes();
 
@@ -26,9 +26,9 @@ const addNote = function (title, body) {
         const notes_json = JSON.stringify(notes);
         // write to notes.json file
         fs.writeFileSync('./notes.json', notes_json);
-        console.log(chalk.green.inverse.bold("DONE!"), chalk.green("New note added!"));
+        console.log(chalk.green.inverse.bold("DONE!"), chalk.green(`New note with title "${chalk.underline(title)}" added!`));
     } else {
-        console.log(chalk.white.inverse.bold("ERROR!"), chalk.red("Another note with same title exists. Please use a different title."))
+        console.log(chalk.white.inverse.bold("ERROR!"), chalk.red(`Another note with same title ("${chalk.underline(title)}") exists. Please use a different title.`))
     }
 };
 
