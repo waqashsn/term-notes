@@ -48,8 +48,34 @@ const getNotes = function () {
     }
 };
 
+// function to remove a note; takes in title of the note
+const removeNote = function(title){
+    // first get all notes from notes.json file
+    const notes = getNotes();
+    // check if there are any notes; if yes, find and delete the given note
+    if(notes.length != 0){
+        // filter out the note to be deleted, updated_notes contains all notes except the note to be deleted
+        const updated_notes = notes.filter(function(note){
+            // keep those notes whose title does not match given note
+            return title != note.title
+        });
+        // check if a note was deleted or not (becuase note to be deleted was not found)
+        if(notes.length != updated_notes.length){
+            const notes_json = JSON.stringify(updated_notes);
+            // write to notes.json file
+            fs.writeFileSync('./notes.json', notes_json);
+            console.log(chalk.green.inverse.bold("DONE!"), chalk.green("Requested note deleted!"));
+        } else {
+            console.log(chalk.red.inverse.bold("ERROR!"), chalk.red(`No note with given title "${chalk.underline(title)}" found.`));
+        }
+    } else {
+        console.log(chalk.red.inverse.bold("ERROR!"), chalk.red("There are no notes in your notebook."))
+    }
+}
+
 
 module.exports = {
     addNote: addNote,
-    getNotes: getNotes
+    getNotes: getNotes,
+    removeNote: removeNote
 }

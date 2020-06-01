@@ -23,6 +23,16 @@ yargs.command({
     }
 })
 
+// yargs command for 'remove' command to remove a note
+yargs.command({
+    command: 'remove',
+    describe: 'remove',
+    handler: function(argv) {
+        console.log("Listing all notes...");
+        utils.removeNote(argv.title);
+    }
+})
+
 
 // parse yargs commands
 yargs.parse();
