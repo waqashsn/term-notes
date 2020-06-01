@@ -1,14 +1,16 @@
-const fs = require('fs');
+// const fs = require('fs');
 const chalk = require('chalk');
 const yargs = require('yargs');
+const utils = require('./utils')
 // console.log(chalk.red("Hello"))
 
 // yargs command for 'add' command to add new note
 yargs.command({
     command: 'add',
     describe: 'Add new note',
-    handler: function() {
-        console.log("Add new note...")
+    handler: function(argv) {
+        console.log(chalk.blue.bold("Adding new note..."));
+        utils.addNote(argv.title, argv.body);
     }
 })
 
