@@ -64,7 +64,7 @@ const removeNote = function(title){
             const notes_json = JSON.stringify(updated_notes);
             // write to notes.json file
             fs.writeFileSync('./notes.json', notes_json);
-            console.log(chalk.green.inverse.bold("DONE!"), chalk.green("Requested note deleted!"));
+            console.log(chalk.green.inverse.bold("DONE!"), chalk.green(`Requested note deleted! (had title "${chalk.underline(title)}")`));
         } else {
             console.log(chalk.red.inverse.bold("ERROR!"), chalk.red(`No note with given title "${chalk.underline(title)}" found.`));
         }
