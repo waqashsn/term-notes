@@ -73,9 +73,27 @@ const removeNote = function(title){
     }
 }
 
+// function to list all notes
+function listNotes(){
+    const notes = getNotes();
+    // list the notes if there are any; else display msg
+    if(notes.length > 0){
+        console.log(chalk.yellow.inverse.bold("        Your Notes        "));
+        notes.forEach(function(note, index){
+            console.log("--------------------------");
+            console.log(`${index+1}. ${chalk.bold(note.title)}`);
+        });
+        console.log("--------------------------");
+        console.log(chalk.white.inverse('Hint!'), chalk.white("To read a note run 'read [note title]' command."))
+    } else {
+        console.log(chalk.white.inverse.bold("OHH!"), chalk.white("You don't have any notes saved in your notebook. Please add a note."))
+    }
+}
+
 
 module.exports = {
     addNote: addNote,
     getNotes: getNotes,
-    removeNote: removeNote
+    removeNote: removeNote,
+    listNotes: listNotes
 }
