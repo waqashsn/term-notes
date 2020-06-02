@@ -4,7 +4,7 @@ A no-frills note taking app for terminal. Stores notes in JSON format in notes.j
 ### Installation
 - Clone the repo or download source code in zip file
 - Open terminal and navigate to Term Notes folder (after unzipping if you downloaded zip)
-- Run following commands by prefix `node` to each command e.g. `node app.js list`
+- Run following commands by prefixing `node` to each command e.g. `node app.js list`
 
 ### Commands
 
