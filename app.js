@@ -53,6 +53,22 @@ yargs.command({
     }
 })
 
+// yargs command for 'read' command to read a note in detail
+yargs.command({
+    command: 'read',
+    describe: 'Read a note in detail',
+    handler: function(argv) {
+        utils.readNote(argv.title);
+    },
+    builder: {
+        title: {
+            describe: "Title of the note you want to read",
+            demandOption: true,
+            type: 'string'
+        }
+    }
+})
+
 
 // parse yargs commands
 yargs.parse();

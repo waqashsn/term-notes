@@ -90,10 +90,27 @@ function listNotes(){
     }
 }
 
+// function to read a note in detail; take in title of the note
+const readNote = function(title){
+    const notes = getNotes();
+    // get the desired note from notes using find method (returns undefined if not found)
+    const desired_note = notes.find(function(note){
+        return note.title === title
+    });
+    if(desired_note != undefined){
+        console.log(chalk.yellow.inverse.bold("  ", desired_note.title, " "));
+        console.log(desired_note.body);
+        console.log("--------------------------");
+    } else {
+        console.log(chalk.red.inverse.bold("ERROR!"), chalk.red("No note with given title found."));
+        console.log(chalk.white.inverse('Hint!'), chalk.white("Run 'read' command to see titles of notes you have."))
+    }
+}
 
 module.exports = {
     addNote: addNote,
     getNotes: getNotes,
     removeNote: removeNote,
-    listNotes: listNotes
+    listNotes: listNotes,
+    readNote: readNote
 }
