@@ -99,6 +99,8 @@ const readNote = function(title){
     });
     if(desired_note != undefined){
         console.log(chalk.yellow.inverse.bold("  ", desired_note.title, " "));
+        const note_date = new Date(desired_note.date_time);
+        console.log(chalk.grey("Date:"), chalk.grey(note_date));
         console.log(desired_note.body);
         console.log("--------------------------");
     } else {
